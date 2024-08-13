@@ -1,0 +1,87 @@
+\section{%%RCUFULLVER%%}
+Released on May 6, 2024, this version updates nearly every aspect of the program with recent system software compatibility, recent operating system compatibility, has a new renderer for truly native PDF output, provides Markdown text exports, adds a new Printer pane, allows direct firmware uploads, and fixes outstanding defects.
+
+\subsection{Compatibility}
+\label{sec:compatibility}
+\begin{tabular}{ r | l }
+  Hardware & reMarkable 1 \& 2 \\
+  Software & 1.8.1.1--3.11.3.3 \\
+  PC & FreeBSD 13, Trisquel 10, Debian 12.5, Fedora 38, openSUSE Leap 15.4, \\
+  & RHEL 7.9, Ubuntu 20.04 and 22.04, macOS 11--14, Windows 10--11 \\
+\end{tabular}
+
+\subsection{Important Notices}
+\begin{itemize}
+\item[!]{It is recommended that users of system software 3.0+ export PDF documents through the Web UI export option.}
+\item[!]{This version of RCU rewrites the PDF renderer, which may have unknown defects. Compatibility with reMarkable system software 3.0+ is limited, and may only render Epubs and PDFs with a reMarkable-native aspect ratio, and notebooks which do not use the continuous pages or text input features.}
+\item[!]{Low-level disk snapshots for RM2 may be taken, but not restored through RCU, since the RM2 does not have a convenient way of fixing low-level operations should any corruption occur.}
+%% \item[!]{Snapshot and firmware import have been disabled temporarily since these features are still unfinished.}
+\end{itemize}
+
+\subsection{Release Notes}
+\begin{itemize}
+  %% New Compatibility
+  \item{Adds system software compatibility for 2.10.0.324 through 3.11.3.3.}
+  \item{Uses modern operating systems as supported platforms.}
+    %% New Features
+  \item{Integrates the Connection Dialog into a new Connection Pane, with the option for automatically starting the connection.}
+  \item{Introduces Printer Pane which can act as a virtual printer for receiving documents.}
+  \item{Introduces a one-window modality, replacing the old Connection Dialog with the new Connection Pane.}
+  \item{Adds CLI arguments: \textit{\--\--purge-settings}, \textit{\--\--page-range}, \textit{\--\--layered}, \textit{\--\--annotated}, \linebreak \textit{\--\--grouped-annots}, \textit{\--\--res-mod}, \textit{\--\--color-black}, \textit{\--\--color-gray}, \textit{\--\--color-white}, \textit{\--\--color-blue}, \linebreak \textit{\--\--color-red}, \textit{\--\--color-highlight}, \textit{\--\--color-highlight-green}, \textit{\--\--color-highlight-pink}, \linebreak \textit{\--\--color-highlight-gray}, \textit{\--\--export-pdf-rm}.}
+  \item{Ability to en/disable tablet settings: Web UI, Wi-Fi, Automatic Updates.}
+  \item{Ability to upload specific firmware.}
+  \item{Ability to take and restore Data snapshots of RM2.}
+  \item{Ability to delete multiple snapshots.}
+  \item{Ability to capture screenshots in any orientation.}
+  \item{Ability to copy screenshots to system clipboard.}
+  \item{Ability to change wallpapers for Starting, Rebooting, Overheating, and Battery Empty screens.}
+  \item{Ability to restore wallpapers after system software update.}
+  \item{Ability to export password-protected PDFs.}
+  \item{Ability to set default PDF renderer.}
+  \item{Ability to export PDFs via Web UI, either over USB or Wi-Fi.}
+  \item{Ability to export typed text as Markdown.}
+  \item{Ability to export snap-highlights as plain-text.}
+  \item{Ability to download original Epub backing files.}
+  \item{Ability to download reMarkable-native RMDOC files (3.10).}
+  \item{Ability to automatically check/fetch RCU updates upon start.}
+  \item{Adds a high-level Data snapshot option.}
+  \item{Adds a GUI option for automatically connecting to the last-used preset.}
+  \item{Adds tooltip text, keyboard shortcuts, accessibility names to most operations.}
+  \item{Adds PDF export option for fallback-to-Web-UI rendering.}
+  \item{Adds PDF export option for highlight annotation grouping.}
+  \item{Adds PDF export options for editing more brush colors.}
+  \item{Shows dialog for failed PDF exports.}
+  \item{Retains \textit{ddvk/remarkable-hacks} bookmarks in PDF exports and RMN operations.}
+  %% Fixes and Misc
+  \item{Supports high-DPI displays, such as Apple Retina.}
+  \item{Faster macOS application start time.}
+  \item{Renames \textit{Backups} to \textit{Snapshots} in Device Info pane and documentation.}
+  \item{Lock recovery OS to take/restore snapshots only at Full-level.}
+  \item{Always uploads RMN archives as new documents.}
+  \item{Allows document uploads to be aborted.}
+  \item{Highlight colors will bleed through page content, not opaquely cover it.}
+  \item{Uses bitmap templates background for bitmap PDF exports.}
+  \item{Ability to render rearranged pages, and user-added note pages.}
+  \item{Renders native PDF elements so individual sketch components may be exported as singular images.}
+  \item{Renders bitmap PDFs with smaller file sizes and lossless quality.}
+  \item{Improves PDF highlight annotation compatibility with more PDF clients.}
+  \item{Improves vector PDF output with realistic brush rendering.}
+  \item{Skips bogus template icon codes, which might exist from using other template-upload software.}
+  \item{Bundles two executables for Windows, \textit{RCU.exe} (no console) and \textit{RCU-CLI.exe} (with console).}
+  \item{Supports Python 3.10.}
+  \item{Fixes defect where Windows could paint the application window beyond the screen border.}
+  \item{Fixes defect where GPLv2 was missing from license list in About pane.}
+  \item{Fixes defect where snapshots taken under recovery OS could not be right-clicked.}
+  \item{Fixes PDF renderer geometry issues relating to CropBox, MediaBox, Adjust View, and highlight annotation bounding rectangles.}
+  \item{Fixes defects where PDF layers could sometimes not be applied properly, or could cause Adobe Acrobat to report ``Generic Error''.}
+  \item{Fixes defect where some PDFs failed to export due to a malformed base PDF, or a base PDF using obscure stream encodings.}
+  \item{Fixes compatibility with Wayland on GNU/Linux platforms.}
+\end{itemize}
+
+\subsection{Known Defects}
+\begin{itemize}
+  \item{Custom rendering for documents created or modified with system software 3.0+ is limited to Epubs and PDFs with a reMarkable-native aspect ratio, and notebooks which do not use the continuous pages or text input features.}
+  \item{Most large PDFs (greater than 500 MB) cannot be exported with system software 3.0+.}
+  \item{Lucida Console is forced on macOS, instead of using the default system typeface.}
+  \item{No warning for RMPKG fault.}
+\end{itemize}

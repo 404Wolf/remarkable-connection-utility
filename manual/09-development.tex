@@ -1,0 +1,137 @@
+\chapter{Developing with RCU}
+\label{sec:developing}
+RCU is a program which is written for Python 3.6--3.10. It uses the Qt graphics library (C++) through bindings using PySide2. Template icon (font) rendering is handled with Pillow. PDF operations are handled with Qt and pikepdf. PC/tablet communications go through SSH using Paramiko. Although RCU is written in Python, the source and interpreter can be combined into a single executable using PyInstaller. All dependency management is handled with Python's internal virtual environment tool (venv).
+
+Your PC should be a targeted platform (FreeBSD, GNU/Linux, macOS, or Windows). It expects to use \textit{python3.9} on FreeBSD (included with base system), and will detect \textit{python\{10..6\}} on all other platforms. Python should be supportive of virtual environments using \textit{python3 -m venv}. The PC should have GNU Make and Bash.
+
+To build the binary, run \textit{make}. Most targets utilize a Python venv, automatically created at \textit{rcu/venv}. Build assets may be cleaned with \textit{make clean}. The venv and documentation are not usually cleaned, so remove them with \textit{make clean-venv} and \textit{make clean-doc}.
+
+Under Windows, a binary must be built with \textit{Make-win.bat \{console|windowed\}}.
+
+
+\section{Platform dependencies}
+\label{sec:platdeps}
+
+When building RCU on a specific platform, the following dependencies are required. RCU requires no dependencies merely to run from a compiled state.
+
+\vspace{0.5cm}
+\begin{tabular}{ r | l }
+  FreeBSD 13.2 & \textit{gmake bash rust qpdf py39-pyside2} \\
+  Fedora 38 & \textit{make binutils python3.8 python3-pyside2} \\
+  openSUSE 15.4 & \textit{make} \\
+  RHEL 7.9 & \textit{python3} \\
+  Ubuntu 20.04 LTS & \textit{make binutils python3.8-venv libxcb-xinerama0} \\
+  Ubuntu 22.04 LTS & \textit{make binutils python3.10-venv libxcb-xinerama0} \\
+  macOS 12 & \textit{brew qpdf} \\
+  Windows 10 & Python 3.9, MS VCpp 14, Ghostscript 10.01.2 \\
+\end{tabular}
+
+
+\section{Common Makefile Targets}
+\label{sec:makefile}
+
+\begin{tabular}{ r | l }
+  \textit{all} & Build just the binary for the current platform (default target). \\
+  \textit{run} & Run the program from source within venv. \\
+  \textit{venv} & Create the python venv for dependency management. \\
+  \textit{doc} & Compile the user manual as PDF (requires \LaTeX). \\
+  \textit{package} & Build the release archive for the current platform. \\
+  \textit{clean} & Purge build assets (but keep venv and documentation). \\
+\end{tabular}
+
+
+
+
+\section{Adding Custom Panes}
+\label{sec:devcustompanes}
+The pane architecture of RCU is modular, so new panes are straightforward to add. To write a new pane, first create a new directory under \textit{src/panes} to hold the new pane's code. In that directory, create a file, \textit{pane.py}, which will serve as the focal point of execution.
+
+The \textit{pane.py} file must contain a class for the pane, implementing the following requirements: (a) the pane must inherit from the \textit{UIController} class\footnote{\raggedleft Find the \linebreak UIController source code at \textit{src/controllers/UIController.py}.}, (b) it must provide the \textit{name} and \textit{ui\textunderscore filename} class variables, and (c) it must initialize first through the parent class. An example is listed in Figure \ref{fig:examplepanesource}.
+
+The pane must be accompanied by a Qt UI file, specified in the class variable \linebreak\textit{ExamplePane.ui\textunderscore filename}. This is exposed to the pane's class as \textit{self.window} upon instantiation.
+
+After adding the \textit{pane.py} file, import it within \textit{src/panes/\textunderscore \textunderscore init\textunderscore \textunderscore.py} (Figure \ref{fig:examplepaneimport}). Once added, the pane will draw itself into RCU's main window.
+
+For non-immediate tasks, it is recommended to use a Worker object. RCU's GUI runs on the main thread, and blocking this may provide a poor user experience. Workers may be executed in the thread pool, which return to the main thread via asynchronous callback. For examples of worker usage, please read a bundled pane's code.
+
+\vfill
+
+\begin{figure}[h]
+\begin{minted}[
+  mathescape,
+  linenos,
+  numbersep=5pt,
+  gobble=2,
+  frame=lines,
+  framesep=2mm,
+  fontsize=\footnotesize]{python}
+  from .example.pane import ExamplePane
+
+  paneslist = [
+      # ...
+      ExamplePane
+      ]
+\end{minted}
+\caption{Example of importing \textit{pane.py} in \textit{src/panes/\textunderscore \textunderscore init\textunderscore \textunderscore.py}}
+\label{fig:examplepaneimport}
+\end{figure}
+\vfill
+
+
+\newpage
+\mbox{}
+\vfill
+
+\begin{figure}[h]
+\begin{minted}[
+  mathescape,
+  linenos,
+  numbersep=5pt,
+  gobble=0,
+  frame=lines,
+  framesep=2mm,
+  fontsize=\footnotesize]{python}
+'''
+pane.py
+This is an example pane.
+
+License: AGPLv3 or later
+'''
+
+from Worker import worker
+from pathlib import Path
+from controllers import UIController
+
+class ExamplePane(UIController):
+    name = 'Example Pane'
+
+    # Dynamic path loading works when running from source
+    # and binary.
+    adir = Path(__file__).parent.parent
+    bdir = Path(__file__).parent
+    ui_filename = Path(adir / bdir / 'example.ui')
+
+    xochitl_versions = [
+        '^3\.4\.[0-9]+\.[0-9]+$'
+    ]
+
+    @classmethod
+    def get_icon(cls):
+        ipathstr = str(Path(cls.bdir / 'icons' / 'emblem-documents.png'))
+        icon = QIcon()
+        icon.addFile(ipathstr, QSize(16, 16), QIcon.Normal, QIcon.On)
+        return icon
+
+    def __init__(self, pane_controller):
+        super(type(self), self).__init__(
+            pane_controller.model, pane_controller.threadpool)
+        # Exposed now are self.model, self.window, and
+        # self.threadpool.
+        # ...
+\end{minted}
+\caption{Example source code for \textit{pane.py}}
+\label{fig:examplepanesource}
+\end{figure}
+
+\vfill
+

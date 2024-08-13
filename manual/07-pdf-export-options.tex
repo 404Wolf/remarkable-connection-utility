@@ -1,0 +1,62 @@
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%% RENDERING SAMPLES
+
+\chapter{PDF Export Options}
+\label{sec:render-samples}
+
+RCU has three PDF rendering modes, each producing a different kind of result. Users of newer tablet software expecting stability should use the \textit{Web UI} renderer, which creates a PDF on the tablet using reMarkable's own software and shuttles the result back. RCU also has its own PDF renderer which can produce files with custom rendering properties and either \textit{Bitmap} or \textit{Vector} graphics.
+
+Bitmap and Vector renderers are wholly compatible with system software 2.15 and below, and experimental with 3.0 or later.\footnote{See \nameref{sec:releasenotes} regarding this feature's compatibility with tablet system software 3.0+.} These renderers are custom-written and lag behind reMarkable file format changes.
+
+A specific PDF renderer may be temporarily selected through the contextual menu (Figure \ref{fig:contextexport}). A default renderer may be selected in the Notebooks pane under the Export PDF menu (Figure \ref{fig:pdfexport}).
+
+\subsection{Export Density}
+RCU may export bitmap PDFs with either standard density (1404$\times$1872 pixels, \break~0.25 MB/page) or high density (2808$\times$3744 pixels, ~0.5 MB/page).
+
+\vspace{0.5cm}
+\begin{figure}[h]
+\begin{tabular}{ r c c }
+  Std. Density & \includegraphics[width=2.2cm]{images/export-density-standard.png}  & \includegraphics[width=4.4cm]{images/export-density-standard-2x.png}\\
+  High Density & \includegraphics[width=2.2cm]{images/export-density-high-2x.png} & \includegraphics[width=4.4cm]{images/export-density-high-2x.png} \\
+  \vspace{0.25cm} & \\
+   & 100\% Zoom & 200\% Zoom \\
+\end{tabular}
+\caption{Comparison of export densities using the Pencil pen.}
+\label{fig:exportdensity}
+\end{figure}
+
+
+
+\subsection{Annotations}
+\label{sec:hltannot}
+RCU may convert all highlight strokes to PDF highlight annotations, as shown in Figure \ref{fig:highlightannot}. If a name is provided using the Rename button in the \nameref{sec:deviceinfo}, that name will be inserted into the anontation's author field.
+
+When the Grouped Annotations export option is enabled, highlights within one stroke-width of each other will be embedded as a single highlight annotation.
+
+If bookmarks are made with \textit{ddvk/remarkable-hacks}, these will be inserted at the top of the resulting PDF's outline index.
+
+
+\subsection{Layers}
+RCU may export each reMarkable document layer as a PDF optional content group (OCG). Most PDF readers render the OCG list into a Layers sidebar index, like shown in Figure \ref{fig:pdfocg}.
+
+
+\mbox{}
+\vfill
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{images/export-annot.png}
+\caption{Exported highlight annotations shown in a PDF reader's sidebar.}
+\label{fig:highlightannot}
+\end{figure}
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=4cm]{images/export-ocg.png}
+\caption{Document layers are extracted as PDF layers.}
+\label{fig:pdfocg}
+\end{figure}
+
+\vfill

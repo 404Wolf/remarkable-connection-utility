@@ -1,0 +1,18 @@
+# PySide2 is specified in requirements2.txt because it must be
+# installed through the port or pkg system on FreeBSD.
+
+paramiko<=2.12.0
+PyInstaller>=4.10,<6
+Pillow>=8.0.1
+certifi
+
+# For highlight extraction
+pdfminer.six==20221105
+
+# For firmware operations
+protobuf==3.17.0
+six==1.16.0
+
+# Below are required for Python 3.6
+appdirs>=1.4.4
+packaging>=20.8

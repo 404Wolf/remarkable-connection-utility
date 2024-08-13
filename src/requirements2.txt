@@ -1,0 +1,2 @@
+pyside2>=5.15
+pikepdf>=3.2.0

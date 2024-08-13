@@ -1,0 +1,122 @@
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+RCU allows complete offline management of a reMarkable tablet, without needing to connect to the manufacturer's proprietary cloud. It gives its users total freedom.
+
+Using this software, one may take and restore whole-disk snapshots, check battery health, capture screenshots, manage notebooks and templates, set wallpaper, install third-party software packages, and print from any system application through RCU's virtual printer.
+
+\subsection{Compatibility}
+\label{sec:compatibility}
+\begin{tabular}{ r | l }
+  Hardware & reMarkable 1 \& 2 \\
+  Software & 1.8.1.1--3.11.3.3 \\
+  PC & FreeBSD 13, Trisquel 10, Debian 12.5, Fedora 38, openSUSE Leap 15.4, \\
+  & RHEL 7.9, Ubuntu 20.04 and 22.04, macOS 11--14, Windows 10--11 \\
+\end{tabular}
+
+\section{System Requirements}
+RCU will likely run under any OS released since 2017, and its hardware requirements are minimal. It requires at-minimum 100 megabytes of disk space, and may use up to 250 megabytes of memory during some operations.
+
+\section{Running RCU}
+\label{sec:running-rcu}
+RCU is distributed as a single binary package. It does not need to be installed and will run from any directory. Running RCU is as easy as double-clicking on its executable icon \footnote{macOS users must \textit{Right-Click, Open} if they have Gatekeeper enabled and are running RCU for the first time. RCU is provided with PGP signatures which ought to be used, instead of Gatekeeper, to verify authenticity. Read more in \linebreak \nameref{sec:troubleshooting}}. RCU may connect to a tablet by USB or Wi-Fi. During periods of data transfer, never disconnect the tablet; doing so may result in a corrupted transfer.
+
+It is possible to upload a Recovery OS with RCU, which provides an emergency SSH connection over USB and allows the user to take or restore snapshots of their device. For this recovery OS to boot, one must grant USB access under GNU/Linux and Windows, as detailed below in \nameref{sec:linnotes} and \nameref{sec:winnotes}.
+
+RCU stores application data in the following locations.
+
+\begin{itemize}
+\item{FreeBSD, GNU/Linux}
+  \begin{itemize}
+  \item[]{Settings: \textit{\textasciitilde/.config/davisr/rcu.conf}}
+  \item[]{Shared data: \textit{\textasciitilde/.local/share/davisr/rcu}}
+  \end{itemize}
+\item{macOS}
+  \begin{itemize}
+    \item[]{Settings: \textit{\textasciitilde/Library/Preferences/rcu.plist}}
+    \item[]{Shared data: \textit{\textasciitilde/Library/Application Support/rcu}}
+  \end{itemize}
+\item{Windows}
+  \begin{itemize}
+  \item[]{Settings: \textit{HKEY\_CURRENT\_USER\textbackslash SOFTWARE\textbackslash davisr\textbackslash rcu}}
+  \item[]{Shared data: \textit{\%APPDATA\%\textbackslash davisr\textbackslash rcu}}
+  \end{itemize}
+\end{itemize}
+
+\newpage
+\section{Entering Recovery Mode}
+\label{sec:enteringrecoverymode}
+An RM1 tablet may be placed into a recovery/flash mode with this sequence. If necessary, RCU can take and restore snapshots without there being a functional operating system. This mode is also necessary to install the Windows \textit{libusb} driver.
+
+\begin{enumerate}
+\item{Turn the device off.}
+\item{Hold the middle facial button while turning the device on with the power button.}
+\item{Continue holding the middle facial button for five seconds. The display will not update, but it is on.}
+\item{The tablet should appear on the PC as \textit{SE Blank MERGEZ}. It is now in recovery mode.}
+\end{enumerate}
+
+When done, restart the tablet by holding the power button for 10 seconds; release, then press the power button to turn it on normally.
+
+
+\section{Notes about GNU/Linux}
+\label{sec:linnotes}
+In order to use low-level snapshots with RM1 devices, GNU/Linux hosts must grant read and write access to the tablet via \textit{udev}. While in recovery mode, the tablet appears as a different USB device than normal operation.
+
+Create a new udev ruleset at \textit{/etc/udev/rules.d/50-remarkable.rules}, as shown in Figure \ref{fig:udevrules}. Replace the \textit{GROUP} attribute with a group belonging to the host's user. After creating this file, reboot the host computer.
+
+\begin{figure}[h]
+\begin{minted}[
+  mathescape,
+  linenos,
+  numbersep=5pt,
+  gobble=0,
+  frame=lines,
+  framesep=2mm,
+  fontsize=\footnotesize]{text}
+SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0061", \
+  MODE="0660", GROUP="yourgroup"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0063", \
+  MODE="0660", GROUP="yourgroup"
+\end{minted}
+\caption{\textit{/etc/udev/rules.d/50-remarkable.rules}}
+\label{fig:udevrules}
+\end{figure}
+
+\subsection{Running on non-Ubuntu GNU/Linux}
+RCU works under many GNU/Linux distributions, even if a binary is not distributed for any specific platform. The most-common incompatibility of a binary version is that PySide2 (Qt) targets a different version of \textit{glibc}, forming symbol lookup errors.
+
+A user with non-Ubuntu GNU/Linux may need to buld their own binary, or run the program from source. This is simple with \textit{make all} or \textit{make run}, and covered further in \nameref{sec:developing}.
+
+
+\newpage
+\section{Notes about Windows}
+\label{sec:winnotes}
+In order to use low-level snapshots with RM1 devices, Windows hosts must use the \textit{libusb-win32} driver. Distributed with the RCU binary is a copy of \href{https://zadig.akeo.ie/}{Zadig}, a utility that makes it simple to install this driver. First, the tablet must first be placed into recovery mode, which will appear as a new type of USB device.
+
+\begin{enumerate}
+  \item{Connect the tablet to a PC with USB.}
+\item{Put the tablet into recovery mode by following the steps in \nameref{sec:enteringrecoverymode}.}
+\item{Open Zadig}
+  \begin{enumerate}
+  \item{From the \textit{Options} menu, enable \textit{List All Devices}.}
+  \item{In the device list, select \textit{SE Blank MERGEZ}.}
+  \item{Set the driver target to \textit{libusb-win32}.}
+  \item{Click \textit{Install Driver} and wait for it to complete.}
+  \end{enumerate}
+\item{Hold the tablet's power button for 10 seconds; release, and press it again to turn the tablet on normally.}
+\item{Reboot the PC}
+\end{enumerate}
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/zadig-windows.png}
+  \caption{Installing the \textit{libusb-win32} driver for Windows}
+  \label{fig:zadigwindows}
+\end{figure}
+
+\vfill

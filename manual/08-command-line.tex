@@ -1,0 +1,101 @@
+\newpage
+\chapter{Command Line Options}
+\label{sec:cli}
+RCU may operate either as a GUI or a CLI program, and its behavior may be changed with flags and arguments.
+
+\vspace{0.5cm}
+
+\begin{longtable}{ r | c | l }
+%% \caption{A simple longtable example}\\
+\hline
+\textbf{Flag} & \textbf{Arguments} & \textbf{Description} \\
+\hline
+\endfirsthead
+\multicolumn{3}{l}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+\textbf{Flag} & \textbf{Arguments} & \textbf{Description} \\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\textit{Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+&&\\
+\textit{\--h}, \textit{\--\--help} & & Show help message and exit. \\
+\textit{\--v}, \textit{\--\--version} & & Print version number and exit. \\
+\textit{\--\--autoconnect} & & Immediately connect to last-used preset. \\
+\textit{\--\--dark} & & Force dark theme. \\
+\textit{\--\--no-check-compat} & & Skip pane compatibility checks (load anyway). \\
+\textit{\--\--no-check-reclaim-storage} & & Skip check for deleted documents. \\
+\textit{\--\--cli} & & Don't show GUI or log (best used with \textit{\--\--autoconnect}). \\
+\textit{\--\--purge-settings} & & Delete all saved configuration (like presets, export options, \\
+&& and file paths). \\
+&&\\
+\textit{\--\--page-range} & \textit{1,3-10} & Set the page numbers to use in final result. \\
+\textit{\--\--layered} & \textit{1} & Export PDF with layers (optional content groups). \\
+\textit{\--\--annotated} & \textit{1} & Export PDF with embedded highlight annotations. \\
+\textit{\--\--grouped-annots} & \textit{1} & Group embedded highlight annotations by proximity. \\
+\textit{\--\--res-mod} & \textit{2} & Bitmap PDF pixel density modifier. \\
+&&\\
+\textit{\--\--color-black} & \textit{0,0,0} & Set the RGB value of ``black'' ink. \\
+\textit{\--\--color-gray} & \textit{128,128,128} & Set the RGB value of ``gray'' ink. \\
+\textit{\--\--color-white} & \textit{255,255,255} & Set the RGB value of ``white'' ink. \\
+\textit{\--\--color-blue} & \textit{0,0,255} & Set the RGB value of ``blue'' ink. \\
+\textit{\--\--color-red} & \textit{255,0,0} & Set the RGB value of ``red'' ink. \\
+\textit{\--\--color-highlight} & \textit{253,255,50} & Set the RGB value of ``yellow'' highlighter. \\
+\textit{\--\--color-highlight-green} & \textit{169,250,92} & Set the RGB value of ``green'' highlighter. \\
+\textit{\--\--color-highlight-pink} & \textit{255,85,207} & Set the RGB value of ``pink'' highlighter. \\
+\textit{\--\--color-highlight-gray} & \textit{207,207,207} & Set the RGB value of ``gray'' highlighter. \\
+&&\\
+\textit{\--\--render-rmn-pdf-b} & \textit{in.rmn \hspace{0.2cm} out.pdf} & Render a local RMN archive to PDF (bitmap). \\
+\textit{\--\--render-rmn-pdf-v} & \textit{in.rmn \hspace{0.2cm} out.pdf} & Render a local RMN archive to PDF (vector). \\
+&&\\
+\textit{\--\--screenshot-0}  & \textit{out.png} & Save a screenshot as PNG (portrait). \\
+\textit{\--\--screenshot-90} & \textit{out.png} & Save a screenshot as PNG (landscape). \\
+\textit{\--\--screenshot-180}  & \textit{out.png} & Save a screenshot as PNG (upside down). \\
+\textit{\--\--screenshot-270} & \textit{out.png} & Save a screenshot as PNG (type folio). \\
+&&\\
+\textit{\--\--list-documents} & & Tab-separated list of documents (\textit{doc\_id}, \textit{name}, and \textit{modification date}). \\
+\textit{\--\--list-collections} & & Tab-separated list of collections (\textit{col\_id}, \textit{name}, and \textit{modification date}). \\
+&&\\
+\pagebreak
+&&\\
+\textit{\--\--upload-doc} & \textit{in.pdf} & Upload document. \\
+\textit{\--\--upload-doc-to} & \textit{in.pdf \hspace{0.2cm} col\_id} & Upload document to specific collection. \\
+\textit{\--\--download-doc} & \textit{doc\_id \hspace{0.2cm} out.rmn} & Download RMN notebook archive. \\
+\textit{\--\--download-rmdoc} & \textit{doc\_id \hspace{0.2cm} out.rmdoc} & Download RMDOC notebook archive. \\
+&&\\
+\textit{\--\--export-pdf-rm} & \textit{doc\_id \hspace{0.2cm} out.pdf} & Export PDF (web UI). \\
+\textit{\--\--export-pdf-b} & \textit{doc\_id \hspace{0.2cm} out.pdf} & Export PDF (bitmap). \\
+\textit{\--\--export-pdf-v} & \textit{doc\_id \hspace{0.2cm} out.pdf} & Export PDF (vector). \\
+\textit{\--\--export-pdf-o} & \textit{doc\_id \hspace{0.2cm} out.pdf} & Export PDF (original base). \\
+\textit{\--\--export-epub-o} & \textit{doc\_id \hspace{0.2cm} out.pdf} & Export Epub (original base). \\
+&&\\
+\end{longtable}
+
+\vspace{0.5cm}
+
+\section{Example Usage}
+
+
+\subsection{Export a specific document as a bitmap PDF.}
+\begin{enumerate}
+\item{Find the ID of the document.}
+  \begin{enumerate}
+  \item[]{\textit{./rcu \--\--autoconnect \--\--cli \--\--list-documents}}
+  \end{enumerate}
+\item{Use that ID to export a PDF.}
+  \begin{enumerate}
+  \item[]{\textit{./rcu \--\--autoconnect \--\--cli \--\--export-pdf-b ``<doc\_id>'' ``/tmp/out.pdf''}}
+  \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Upload a document to the root folder.}
+\textit{./rcu \--\--autoconnect \--\--cli \--\--upload-doc ``/tmp/in.pdf''}
+
+
+\subsection{Convert an RMN to bitmap PDF without connecting to the tablet.}
+\textit{./rcu \--\--render-rmn-pdf-b ``/tmp/in.rmn'' ``/tmp/out.pdf''}
+\newpage

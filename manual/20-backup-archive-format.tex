@@ -1,0 +1,51 @@
+\newpage
+\appendix
+
+\chapter{Snapshot Archive Format}
+\label{sec:snapshotarchiveformat}
+Low-level snapshots are stored on the PC's disk under RCU's shared data directory. The exact path for each operating system is listed in \nameref{sec:compatibility}.
+
+Each snapshot archive is given a unique identifier, and a directory is created to store its contents. An example directory structure is listed in Figure \ref{fig:snapshotstructure}
+
+\begin{figure}[h]
+  \dirtree{%
+  .1 backups.
+  .2 902b512b-8742-481d-b5f1-e185c0668e9f.
+  .3 files.
+  .4 mmcblk1boot0.bin.
+  .4 mmcblk1boot1.bin.
+  .4 mmcblk1.bin.
+  .3 backup.json.
+}
+\caption{Example structure of a snapshot archive}
+\label{fig:snapshotstructure}
+\end{figure}
+
+The \textit{backup.json} file contains metadata about the snapshot, and is used by RCU to populate the UI. In summary, this file contains the snapshot's ID, timestamp, device information, the device's partition table (output of \textit{fdisk -l}), and checksums of the dumped partitions.
+
+Depending on the reMarkable hardware variant, the eMMC device may reside at \textit{/dev/mmcblk1} for RM1, or \textit{/dev/mmcblk2} for RM2.
+
+OS snapshots store the bootloader, secondary boot partition (containing factory device information), the bootloader data partition, primary OS partition, and secondary OS partition. The primary OS may reside on \textit{mmcblk1p2} or \textit{mmcblk1p3}, flipping after every system update.
+
+\begin{itemize}
+\item{/dev/mmcblk1boot0}
+\item{/dev/mmcblk1boot1}
+\item{/dev/mmcblk1p1}
+\item{/dev/mmcblk1p2}
+\item{/dev/mmcblk1p3}
+\end{itemize}
+
+Data snapshots only store the data partition, which is mounted as \textit{/home/root}.
+
+\begin{itemize}
+\item{/dev/mmcblk1p7 or /dev/mmcblk2p4}
+\end{itemize}
+
+Full snapshots store the bootloader, secondary boot partition, and the entire contents of the eMMC (all partitions combined).
+
+\begin{itemize}
+\item{/dev/mmcblk1boot0}
+\item{/dev/mmcblk1boot1}
+\item{/dev/mmcblk1}
+\end{itemize}
+

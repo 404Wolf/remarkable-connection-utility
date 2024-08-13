@@ -1,0 +1,345 @@
+\newpage
+\chapter{Basic Operation}
+RCU is organized into separate panes, each handling a dedicated task. Panes may be switched by clicking on their titles in the left sidebar.
+
+\section{Connection Dialog}
+\label{sec:connectiondialog}
+When RCU is launched, it will show the Connection Dialog. The user must enter the information used to connect to their tablet. These configuration settings may persist by clicking the Save button. Clicking the Connect button will initiate a connection to the device\footnote{RCU uses SSH for all its communication with the tablet.} and load the Panes window.
+
+Figure \ref{fig:connectiondialog} shows the Connection Dialog window.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=6cm]{images/new-connection.png}
+  \caption{\nameref{sec:connectiondialog}}
+  \label{fig:connectiondialog}
+\end{figure}
+
+Connection presets may be stored, for using RCU with multiple devices or on multiple networks. Presets are accessed through the small arrow on the Save button. New presets may be added, and the active preset may be renamed, saved, or deleted.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=6cm]{images/connection-presets.png}
+  \caption{Access presets in the Save button drop-down menu.}
+  \label{fig:cxpresets}
+\end{figure}
+
+
+
+\newpage
+If a user finds themselves with an unresponsive RM1 tablet, they may place their device into a recovery mode by holding down the home button while pressing the power button. Expand the \textit{Connect} button by pressing the arrow, then click \textit{Enter Recovery OS} (Figure \ref{fig:recoveryos}) to boot over USB.\footnote{If the tablet has previously loaded the recovery OS, clicking this menu item will enter the existing recovery session.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=6cm]{images/recoveryos.png}
+  \caption{Enter Recovery OS}
+  \label{fig:recoveryos}
+\end{figure}
+
+
+
+\newpage
+\section{Device Info Pane}
+\label{sec:deviceinfo}
+This pane shows the user information about their tablet, and allows one to perform low-level device operations.
+
+\subsection{Rename}
+An owner may sign their name to their tablet using the Rename button. This will change the the label from reading \textit{Connected reMarkable} to \textit{Name's reMarkable} in the \nameref{sec:deviceinfo}. This name will also be used in the author field of embedded PDF highlight annotations (when enabled).
+
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=2.5cm]{images/rename-dialog.png}
+  %% \caption{Entering a new device name}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=3cm]{images/rename-label.png}
+  %% \caption{Device name as it appears in \nameref{sec:deviceinfo}}
+\end{minipage}
+\caption{Entering a new device name}
+\end{figure}
+
+
+\subsection{Snapshots}
+Snapshots allow one to dump the state of their tablet to the local PC. There are two major types of snapshots: low-level, and high-level. Low-level snapshots dump the tablet's entire disk partition(s). High-level snapshots only dump the contents of the tablet's file system.
+
+Snapshots may only be restored to the device as they were taken. Original data is not altered during a restore. If a user links their tablet with the first-party reMarkable Cloud, restoring a snapshot could interfere with cloud synchronization.
+
+On RM2, both low-level and high-level Data snapshots may be taken, but only high-level snapshots may be restored. All snapshot types are compatible with RM1 because its hardware cannot be bricked during low-level restores.
+
+There are three minor snapshot types: OS-only, Data-only, and Full. Snapshots may only be taken or restored through a USB connection. Only Full snapshots may be used to restore a totally-bricked device.
+
+OS snapshots will restore the operating system partitions to the tablet's internal storage. These cannot be used to restore a bricked device. If a user applies an undesired OS update to their tablet, an OS snapshot may be used to downgrade to the prior OS without losing data. However, there can be no guarantee the data will remain compatible with the old OS image, such as when reMarkable's system software was updated from version 1 to 2. A copy of the bootloader is captured with an OS snapshot.
+
+Data snapshots will restore the data partition, where user documents (notebooks and uploaded files) and application settings (Wi-Fi networks, passwords and codes) reside, to the tablet's internal storage. They will not affect the operating system partitions, and are best used to revert a bulk of documents to an earlier state.
+
+Full snapshots, as seen in Figure \ref{fig:snapshotrestore}, may be used to restore a bricked device should the need ever arise. They require the most storage space on the client PC because they contain a complete mirror of the tablet's internal storage. A Full snapshot may be restored completely, or used to restore only the OS, or used to restore only the Data, or used to restore the bootloader.
+
+Although it is possible for advanced users to extract individual files from snapshots, RCU cannot. If a user finds themselves in this situation, they may refer to the \nameref{sec:snapshotarchiveformat}.
+
+A custom snapshot directory may be set by modifying the \textit{share\_path} variable in RCU's settings (see \nameref{sec:running-rcu} for OS-specific locations).
+
+
+\newpage
+\mbox{}
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/device-info.png}
+  \caption{\nameref{sec:deviceinfo}}
+  \label{fig:deviceinfo}
+\end{figure}
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/backup-restore.png}
+  \caption{A Full snapshot may be restored completely, only the bootloader, only the OS partitions, or only the Data partition.}
+  \label{fig:snapshotrestore}
+\end{figure}
+
+\vfill
+
+\newpage
+
+\subsection{Battery Information}
+Detailed information about a tablet's battery may be seen by pressing the Batt. Info button.
+
+\begin{itemize}
+\item{Status: whether the battery is discharging, charging, or full.}
+\item{Temperature: the current temperature of the battery in Celsius and Fahrenheit.}
+\item{Current Charge: the presently-stored power, in milliamperes$\times$hours.}
+\item{Full Charge Capacity: the amount of power stored on the last full-charge, in milliamperes$\times$hours. The progress bar beneath this field indicates the current charge divided by the full charge capacity (a measure of the current state of charge).}
+\item{Design Capacity: the amount of power the battery was originally designed to store, in milliamperes$\times$hours. The progress bar beneath this field indicates the full charge capacity divided by the design capacity (a measure of battery health compared to when it left the factory).}
+\end{itemize}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=5.5cm]{images/battery-info.png}
+  \caption{Battery information.}
+  \label{fig:batteryinfo}
+\end{figure}
+
+
+\subsection{Flip Boot Partition}
+The Flip Boot Partition menu item is used to switch which boot partition is active and inactive. Right-click on the tablet icon to see this menu.
+
+The tablet has two boot partitions. It always has one set to Active and the other Inactive. During a system software update, the new system software image is written to the inactive partition. Once the write procedure is verified, the tablet marks this newly-written partition Active and marks the other partition Inactive (flipping them).
+
+If one accidentally upgrades their device's system software version, they may immediately revert it by right-clicking the tablet icon, then choosing the Flip Boot Partition menu item. There is no guarantee that data written after a system software upgrade (such as newly-created or modified documents) will be compatible with the older system software version. This operation is performed at one's own risk. It is wise to keep low-level snapshots and document-level archives before using the Flip Boot Partition feature.
+
+
+\subsection{Upload Firmware}
+The Upload Firmware menu item is used to upgrade, downgrade, or reinstall reMarkable system software (with a \textit{.signed} file extension) to the inactive boot partition. A USB connection is required for uploading firmware. Right-click on the tablet icon to see this menu.
+
+Unexpected concequences to tablet data may occur when uploading firmware outside the reMarkable-official upgrade path. The reMarkable file format is known to change between major system software revisions. Using a firmware not designed to read the format of already-saved notebooks may result in inoperability or undocumented errors. One example of such a case is when downgrading from system software 3.0+ to 2.15-: notebooks opened or created with the newer firmware cannot be read with the older system software.
+
+Firmware files may be obtained directly from reMarkable's update server. Because of the copyrighted nature of these files, links shall not be provided in this text.
+
+
+
+
+\newpage
+\section{Display Pane}
+\label{sec:displaypane}
+A user may capture screenshots of their tablet through the Display Pane. Press the Refresh button to preview the screen, then press the Save Screenshot button to record the image to disk. The image orientation may be rotated 90 degrees by choosing between the \textit{Portrait} and \textit{Landscape} radio buttons.
+
+Keyboard shortcuts exist in this pane for saving a screenshot to disk (Ctrl+S), copying the screenshot to the system clipboard (Ctrl+C), and refreshing the image (Ctrl+R or F5).
+
+Screenshots are saved as lossless, 8-bit grayscale PNG (no alpha) images, measuring 1404$\times$1872 pixels.
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/display.png}
+  \caption{\nameref{sec:displaypane}}
+  \label{fig:displaypane}
+\end{figure}
+
+\vfill
+
+\newpage
+\section{Notebooks Pane}
+\label{sec:notebookspane}
+Documents may be transmitted between a tablet and PC through the Notebooks Pane. The default download type is a reMarkable Notebook Archive (RMN) because it can fully restore editable notebooks and their templates\footnote{Information about the RMN format may be found under \nameref{sec:notebookarchiveformat}.}.
+
+Documents may be uploaded to the device as RMN, PDF, or Epub files. Click the Upload button to select which files to upload. Uploading an RMN will always create a cloned document, changing the document's internal identifier (UUID).
+
+Documents may be downloaded from the device as RMNs, or exported as PDF or Markdown. It is recommended to archive notebooks with the RMN format because they are lossless, containing all the information needed to re-create a PDF.\footnote{RCU may convert RMN to PDF without connecting to a tablet. See: \nameref{sec:cli}.} When downloading a single file, it may be renamed before it is saved. When downloading files as a batch the user must select a new directory to save them in. When exporting a batch, if identically-named files already exist in the target directory, they will be overwritten.
+
+Various style options may be found inside the Export PDF menu by clicking that button's arrow. These options are detailed in \nameref{sec:render-samples}. One may set the default renderer from this menu by choosing an export action.
+
+By right-clicking on a document, operations such as Rename, Delete, or Favorite may be performed. When items are favorited, they appear with a star icon at the top of the tree view's sort. Additional export options are also available under this menu, such as to export typed text as Markdown, or to export snap-highlights as plain-text.
+
+Documents may be re-organized by dragging and dropping them into the desired collections.
+
+The Notebooks Pane will automatically refresh when changes are made on the tablet. Notebook data may be forcibly refreshed with Ctrl+R or F5.
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/notebooks.png}
+  \caption{\nameref{sec:notebookspane}}
+  \label{fig:notebookspane}
+\end{figure}
+
+\newpage
+\mbox{}
+
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/notebooks-dragdrop.png}
+  \caption{Documents may be organized by dragging and dropping between collections.}
+  \label{fig:docexport}
+\end{figure}
+
+\vfill
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=2cm]{images/context-export.png}
+  \caption{Web UI, Bitmap, Vector, and Base PDF documents may be exported.}
+  \label{fig:contextexport}
+\end{figure}
+
+\vfill
+
+\newpage
+\mbox{}
+\vfill
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=10cm]{images/pdf-export-options.png}
+  \caption{Choose ink colors, export options, and the default renderer in \nameref{sec:render-samples}.}
+  \label{fig:pdfexport}
+\end{figure}
+
+\vfill
+
+
+
+\newpage
+\section{Templates Pane}
+\label{sec:templatespane}
+Users may add or remove their own templates in SVG, PNG, or \nameref{sec:templatearchiveformat} (RMT). SVG or RMT formats are preferred.
+
+Add a template to the tablet by clicking the Upload button, then selecting an RMT file. SVG and PNG templates will require the user to enter the appropriate metadata, as shown in Figure \ref{fig:templatesmodal}, and should be of appropriate resolution (1404$\times$1872 pixels).
+
+Download a template from the tablet by selecting one in the list view, clicking the Download button, then choosing a filename to save.
+
+To delete a template from the tablet, right-click on it, then choose Delete. Upon confirmation, RCU will permanantly delete the template from the device.
+
+Template are installed to the tablet in \textit{\textasciitilde/.local/share/remarkable/templates}. Softlinks are created in \textit{/usr/share/remarkable/templates}, where the system templates are stored. A system update may remove these links, and the templates will not load in the tablet's interface. If the user previously installed custom templates using RCU, this situation will be detected, the program will alert the user, and the template links may be restored automatically. Because templates always reside on the device, any copy of RCU on any computer may be used to fix these links.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/templates.png}
+  \caption{\nameref{sec:templatespane}}
+  \label{fig:templatespane}
+\end{figure}
+\vfill
+
+
+\newpage
+\mbox{}
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/template-modal.png}
+  \caption{\textit{New Template} modal for uploading SVG and PNG templates.}
+  \label{fig:templatesmodal}
+\end{figure}
+\vfill
+
+
+\newpage
+\section{Wallpaper Pane}
+\label{sec:wallpaperpane}
+Device wallpapers\footnote{These are sometimes called ``splash'' images.} may be changed for the following screens: Suspended (sleep), Powered Off, Starting, Rebooting, Overheating, and Battery Empty.
+
+Users may update wallpaper by pressing the Upload button and selecting a PNG image. It is recommended these images have a resolution of 1404$\times$1872 pixels without transparency.
+
+Images may be reset to the factory-defaults by clicking the Reset button. The current wallpaper may be downloaded with the Download button.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/wallpaper.png}
+  \caption{\nameref{sec:wallpaperpane}}
+  \label{fig:wallpaperpane}
+\end{figure}
+\vfill
+
+
+\newpage
+\section{Software Pane}
+\label{sec:softwarepane}
+Third-party software may be uploaded to the device in the reMarkable Software Package (RMPKG) format. For details about creating an RMPKG file, please read the \nameref{sec:softwarepackageformat}.
+
+To install a software package, click the Upload button, select an RMPKG file, then wait for the install process to complete. RCU's interface may freeze momentarily.
+
+To remove a software package, select one in the list view, then click the Uninstall button and wait for the removal process to complete.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/software.png}
+  \caption{\nameref{sec:softwarepane}}
+  \label{fig:softwarepane}
+\end{figure}
+\vfill
+
+
+\newpage
+\section{Printer Pane}
+\label{sec:printerpane}
+The virtual printer may allow one to print documents to their tablet natively from any application on their computer. It works by emulating a network printer that converts print commands to PDF, then uploads the result as a new document into the tablet's root collection.
+
+Before the virtual printer may be used, it must be added through the computer's printer settings. The Settings button will open these printer settings.
+
+The virtual printer's state may be changed with the Start or Stop button. Once RCU connects to a tablet, the virtual printer will resume its last operating state.
+
+The computer's print queue will hold pending documents until the virtual printer is started, after which the documents will be uploaded to the tablet.
+
+Specific instructions for adding a printer vary per host operating system and desktop environment, and are displayed in the pane's information box. The virtual printer will bind to \textit{localhost:8493} and communicate via Internet Printing Protocol (IPP). The accepted data format is usually PostScript, except on FreeBSD and GNU/Linux, where the data format is expected to be PDF.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/printer.png}
+  \caption{\nameref{sec:printerpane}}
+  \label{fig:printerpane}
+\end{figure}
+\vfill
+
+
+\newpage
+\section{About Pane}
+\label{sec:aboutpane}
+Meta information about RCU may be viewed in the About Pane. This view contains its version number, credits to the people and software RCU depends upon, and copies of relevant software licenses.
+
+By clicking the Check for Updates button, a user may request RCU to contact the update server to check if they are running the latest version.
+
+By clicking the Fetch Compatibility button, a user may request RCU to contact the update server to download the latest compatibility table. When the reMarkable company issues a non-breaking software update, a new compatibility table allows the old version of RCU to work with the new system software version.
+
+Enabling ``On Start'' will check for updates and fetch new compatibility each time RCU is started.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{images/about.png}
+  \caption{\nameref{sec:aboutpane}}
+  \label{fig:aboutpane}
+\end{figure}
+\vfill

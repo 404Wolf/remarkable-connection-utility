@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96"
+   inkscape:export-xdpi="96"
+   inkscape:export-filename="/home/davisr/hdd/Developer/remarkable-connection-utility/rcu/icon/24x24/rcu-icon-24x24.png"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="rcu-icon-24x24.svg">
+  <title
+     id="title833">RCU Icon</title>
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient901"
+       inkscape:collect="always">
+      <stop
+         id="stop897"
+         offset="0"
+         style="stop-color:#9f9f9f;stop-opacity:1" />
+      <stop
+         id="stop899"
+         offset="1"
+         style="stop-color:#757575;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient889"
+       inkscape:collect="always">
+      <stop
+         id="stop885"
+         offset="0"
+         style="stop-color:#7f7f7f;stop-opacity:1" />
+      <stop
+         id="stop887"
+         offset="1"
+         style="stop-color:#4a4a4a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1688">
+      <stop
+         style="stop-color:#cbcbcb;stop-opacity:1"
+         offset="0"
+         id="stop1684" />
+      <stop
+         style="stop-color:#dedede;stop-opacity:1"
+         offset="1"
+         id="stop1686" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="matrix(0.37096774,0,0,0.37096774,0.12903226,0.12903226)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient1688"
+       id="linearGradient1690"
+       x1="36.329582"
+       y1="62.971992"
+       x2="36.329582"
+       y2="57.760128"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient889"
+       id="linearGradient863"
+       gradientUnits="userSpaceOnUse"
+       x1="-6.2697067"
+       y1="-14.588751"
+       x2="5"
+       y2="32.5"
+       gradientTransform="translate(-7.4770231,26.59297)" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="24.166216"
+       x2="3.0641096"
+       y1="0.5"
+       x1="0.5"
+       id="linearGradient903"
+       xlink:href="#linearGradient901"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     showborder="false"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="29.120634"
+     inkscape:cy="14.961717"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     borderlayer="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       spacingy="0.5"
+       spacingx="0.5"
+       empspacing="2"
+       type="xygrid"
+       id="grid853" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>RCU Icon</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Davis Remmel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>remarkable</rdf:li>
+            <rdf:li>connection</rdf:li>
+            <rdf:li>utility</rdf:li>
+            <rdf:li>rcu</rdf:li>
+            <rdf:li>tablet</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#dedede;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
+       id="rect1661"
+       width="62"
+       height="62"
+       x="-73.573593"
+       y="0.72387552"
+       ry="9" />
+    <path
+       id="path1663"
+       style="fill:#4a4a4a;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
+       d="m -64.573593,0.72387555 c -4.986,0 -9,4.01399995 -9,9.00000005 V 53.723876 c 0,4.986 4.014,9 9,9 z" />
+    <rect
+       style="fill:#ced3cc;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
+       id="rect1665"
+       width="45"
+       height="45"
+       x="-60.573593"
+       y="4.7238755"
+       ry="5" />
+    <g
+       id="g1673"
+       transform="translate(-77.573593,-2.5261245)">
+      <circle
+         style="fill:#797979;fill-opacity:1;stroke:none;stroke-width:1.71552;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="circle1667"
+         cy="30.682404"
+         cx="29.982931"
+         r="2.7230451" />
+      <path
+         style="fill:none;stroke:#737373;stroke-width:3.14119px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 34.89434,33.390044 c 4.067937,2.171068 10.337557,2.031896 12.564754,-3.141189"
+         id="path1669"
+         sodipodi:nodetypes="cc" />
+      <circle
+         r="2.7230451"
+         cy="25.794394"
+         cx="49.790913"
+         id="circle1671"
+         style="fill:#797979;fill-opacity:1;stroke:none;stroke-width:1.71552;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    </g>
+    <path
+       d="m -5,-1 c -1.2465,0 -2.25,1.0035 -2.25,2.25 v 11.5 c 0,1.2465 1.0035,2.25 2.25,2.25 h 0.25 V -1 Z"
+       style="fill:#4a4a4a;fill-opacity:1;stroke:#8c8c8c;stroke-width:0;stroke-linecap:round;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect862" />
+    <circle
+       r="0.95890516"
+       cy="17.739229"
+       cx="-2.2068412"
+       id="circle1013"
+       style="fill:#8f8f8f;fill-opacity:1;stroke:none;stroke-width:0.60411;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+    <path
+       id="path861"
+       style="fill:url(#linearGradient863);fill-opacity:1;stroke:#8c8c8c;stroke-width:0;stroke-linecap:round;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m -3.4770231,26.643751 c -2.2528965,0.250095 -4,2.12746 -4,4.449219 v 23 c 0,2.32176 1.7471035,4.199124 4,4.449218 z" />
+    <rect
+       style="fill:url(#linearGradient1690);fill-opacity:1;stroke:#8c8c8c;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect1568"
+       width="23"
+       height="23"
+       x="0.5"
+       y="0.5"
+       ry="3.1039567" />
+    <rect
+       style="fill:#ced3cc;fill-opacity:1;stroke:#858585;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1587"
+       width="16"
+       height="15"
+       x="5"
+       y="3"
+       ry="1.8548387" />
+    <path
+       d="M 2.5 0.7109375 C 1.3302364 1.1550033 0.5 2.2743043 0.5 3.6035156 L 0.5 20.396484 C 0.5 21.725696 1.3302364 22.844997 2.5 23.289062 L 2.5 0.7109375 z "
+       style="fill:url(#linearGradient903);stroke:#696969;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       id="rect890" />
+    <g
+       id="g875"
+       transform="matrix(1.2917082,0,0,1.2917082,0.20488181,-4.8245217)">
+      <circle
+         style="fill:#8f8f8f;fill-opacity:1;stroke:none;stroke-width:0.60411;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="circle1009"
+         cy="19.460516"
+         cx="-9.1821117"
+         r="0.95890516" />
+      <path
+         style="fill:none;stroke:#909090;stroke-width:1.10616px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -7.452586,20.413996 c 1.4325015,0.764529 3.640313,0.71552 4.424608,-1.106152"
+         id="path1011"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:#8f8f8f;fill-opacity:1;stroke:none;stroke-width:0.60411;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="circle1013-7"
+         cx="-1.7068412"
+         cy="17.739229"
+         r="0.95890516" />
+    </g>
+    <circle
+       style="fill:#797979;fill-opacity:1;stroke:none;stroke-width:0.75208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="circle884"
+       cy="10.435414"
+       cx="9.541502"
+       r="1.1937776" />
+    <path
+       style="fill:none;stroke:#737373;stroke-width:1.0162;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 11.694653,12.243452 c 1.783375,0.951791 4.531964,0.890779 5.508363,-1.377091"
+       id="path886"
+       sodipodi:nodetypes="cc" />
+    <circle
+       r="1.1937776"
+       cy="8.5183439"
+       cx="17.886545"
+       id="circle888"
+       style="fill:#797979;fill-opacity:1;stroke:none;stroke-width:0.75208;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="bitmask"
+     id="layer2"
+     inkscape:groupmode="layer">
+    <image
+       id="image881"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAmNJREFU WIXdl0Fr2zAYhl8phmw0jWL3UEPwuYu3LG0oo72E0kF72Dk99w9kv6F/oenf2Ng5l5BLGYzRbMmG 11xLl8sSW6aiLbHlnTJIF4NT2wT6XgSW9b3PJ322JAIAx8fHzwB8EkK83dnZoUEQZJCCCCF+JpO5 9jyveXNzc3pycuKRer3+XFGU35zzAgA0m01QStPwh5QSjuOg3+8LzvkXx3EOaC6X+zA1B5Ca+TS2 pmmo1WorjLE3q6ur7xXO+UHYgOFwCMuy4LoupJSxjBljKJVK0HUdhBCUy+WV8/PzhnJ/f6+EmXe7 XZTKG2AFFmtmpJRwbI6L7gUqrysoFosoFArwPM+gQRDMHWRZFkqvNqBqauxloZRCW1Px4uUGBoPB v2dBEGRCI7uuC6ayWMYPVVAZOOezcGEvSykTL0hK6X+1lF7JR9TTBBiPbLRbHYxH9nIAvn39PtMm BhA1s83tykybGEDUzLQ1FfuHe9DW1GQBFsksqhYCiJpZu9VJByCK2q3OQjM0dyNaxOyhNrcrkdY+ EYD9w704wwE81T9hIgDzdq64mrfDhgLk83lwh4d1P0qOzcHY7BkjFMA0TVg/LjEe2bFnQkqJ0Z8x fv28hGmaM32hX4Gu66huVWFZFnqcJ3IorW5Vsb6+Hg1gCqHr+qONI8GlGj0KACFkKcZSShBCfJrN Zr1lANi2DUVRrpR8Pt+6u7t7N+2YTCapmwdBgF6vJzzPO1WEEHXG2DXnXAWA29vbVC+nrutiMBgI IcRnwzDOCAA0Go2sEOKj67oHu7u7aV/Pr3zfPzUM4+zo6Mj/C3WDBU0YUm1JAAAAAElFTkSuQmCC  "
+       preserveAspectRatio="none"
+       height="32"
+       width="32"
+       x="0"
+       y="0" />
+  </g>
+</svg>

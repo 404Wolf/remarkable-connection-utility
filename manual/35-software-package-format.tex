@@ -1,0 +1,25 @@
+\chapter{Software Package Format}
+\label{sec:softwarepackageformat}
+Please download the RCU sources, then find the \textit{rmpkg-sample} directory. This sample package contains useful information about the package format in a practical way, by using a self-extracting shell script with a tape-archive payload.
+
+The RMPKG format is a self-contained executable that exposes a number of command line arguments. This format has several convenient properties:
+
+\begin{itemize}
+\item{Installable any time, directly onto a stock tablet, no other software required (not even RCU).}
+\item{Self-contained package format convenient to download, convenient for authors to earn income for their work.}
+\item{Possible to write an RMPKG in any language that targets ARMv7}
+  \item{No Internet access required}
+\item{Handles own compatibility checks, installation, and uninstallation}
+  \end{itemize}
+
+
+There are many ways to build a program that fit this description. The easiest way to configure an RMPKG is with an ordinary shell script, appended with the application's binary payload (like a .tar), which self-executes. An RMPKG should expose the following flags.
+
+\begin{itemize}
+\item{\textit{\phantom{}-\phantom{}-info}: Prints information about the package useful for anyone who stumbles upon it}
+\item{\textit{\phantom{}-\phantom{}-manifest}: Prints a manifest of any files touched by the package; used for detecting conflicting packages}
+\item{\textit{\phantom{}-\phantom{}-install}: Installs the package payload to the system}
+\item{\textit{\phantom{}-\phantom{}-uninstall}: Uninstalls the package payload from the system}
+\end{itemize}
+
+RCU uploads packages to the tablet's \textit{\textasciitilde /.rmpkg} directory. %% Implement this: after performing a software update, RCU will check and reinstall each package in ~/.rmpkg.

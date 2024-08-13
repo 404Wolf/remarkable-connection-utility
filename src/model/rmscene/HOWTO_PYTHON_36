@@ -1,0 +1,52 @@
+How to Convert `rmscene` to Python 3.6
+======================================
+
+This document describes how to transpile Rick Lupton's `rmscene` to
+Python 3.6, which is the minimum environment that RCU supports.
+
+
+Obtain `rmscene` source code
+============================
+`rmscene` releases are posted by Lupton to GitHub. He tags them in the
+git repo. I keep a separate repository in ~/Developer/rmscene as a local
+clone, and is my canonical source for `rmscene` code. I have made local
+changes which Lupton has not reincorporated relating to file headers and
+minor bug fixes.
+
+https://github.com/ricklupton/rmscene
+
+
+
+TODO
+* have to use fedora for conversion because it has later python
+* copy files locally to fedora
+* something something something
+* treyhunner/undataclass
+  * manual resolution of something?
+After converting scene_stream.py, an edit needed to be made to
+    replace dataclasses.replace(). Where it once read
+    
+      item = replace(b.item, value=tree[node_id])
+    
+    I replaced with
+    
+      new_dict = b.item.__dict__
+      item = type(b.item)(**new_dict)
+      item.value = tree[node_id]
+
+Secondly, in scene_items.py, the undataclass program barfed on the
+    SceneItem class, which is just blank. So, I removed this class from
+    the original file, ran undataclass, then manually wrote it in:
+    
+      class SceneItem:
+          """Base class for items stored in scene tree."""
+          def __init__(self):
+              pass
+    
+    Finally, I had to remove all the type hints, which aren't supported
+    in Python 3.6. I used a pip package called `strip-hints`:
+    
+      for f in *.py; do strip-hints --inplace --to-empty $f; done
+
+
+* remove 'from __future__...' and walrus operator (:=)

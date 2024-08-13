@@ -1,0 +1,54 @@
+\documentclass{memoir}
+\usepackage{xcolor,color,graphicx}
+\usepackage[english]{babel}
+\usepackage{afterpage}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{palatino}
+\usepackage{minted}
+\usepackage{dirtree}
+\usepackage{longtable}
+\usepackage[]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  allcolors={magenta},
+  linkbordercolor={white},
+  hypertexnames=false,
+  pdftitle={reMarkable Connection Utility},
+  pdfauthor={Davis Remmel},
+  pdfsubject={User Manual},
+  pdfkeywords={remarkable, tablet, manual, rcu, connection, utility},
+  bookmarksnumbered=false,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  pdfstartview=,
+  pdfpagemode=UseOutlines
+}
+
+\definecolor{ared}{rgb}{.647,.129,.149}
+\renewcommand\colorchapnum{\color{ared}}
+\renewcommand\colorchaptitle{\color{ared}}
+\chapterstyle{pedersen}
+
+\newcommand*{\titleTH}{\begingroup% T&H Typography
+  \thispagestyle{empty}
+  \raggedleft
+  \vspace*{\baselineskip}
+  {\Large Davis Remmel}\\[0.167\textheight]
+  {\textcolor{ared}{\Huge \textit{reMarkable Connection Utility}}}\\[\baselineskip]
+  {\small All-in-One Local Tablet Management}\par
+  \vspace{0.4cm}\includegraphics[width=2cm]{images/icon.png}
+  \vfill{\Large User Manual}\par
+  \vspace*{3\baselineskip}
+\endgroup}
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+
+\begin{document}
+\footnotesinmargin
+\pagenumbering{roman}
+
+\titleTH

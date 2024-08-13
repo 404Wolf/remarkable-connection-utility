@@ -1,0 +1,260 @@
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{r2021.002}
+Released on September 10, 2021, this version addresses compatibility with system software 2.9.1.236, adds CLI options for transferring documents, and improves PDF handling and rendering.
+
+\subsection{Compatibility}
+\begin{tabular}{ r | l }
+  Hardware & reMarkable 1 \& 2 \\
+  Software & 1.8.1.1--2.9.1.236 \\
+  PC & FreeBSD 13.0, Ubuntu 18/20 LTS, Fedora 33, openSUSE 15.2, CentOS 7, \\
+  & macOS 10.13, Windows 10 \\
+\end{tabular}
+
+%% \subsection{Important Notices}
+%% \begin{itemize}
+%% \item[!]{Sample notice.}
+%% \end{itemize}
+
+\subsection{Release Notes}
+\begin{itemize}
+\item{Compatibility with system software 2.9.1.236, rm2fb.\footnote{This is a shim for other third-party software (not RCU) to display graphics on RM2. Read more: \textit{\href{https://github.com/ddvk/remarkable2-framebuffer}{ddvk/remarkable2-framebuffer}}.}}
+  \item{Snap-highlighted text extracts into PDF highlight comments.}
+  \item{High Density export option (4x DPI bitmap rendering).}
+  \item{Create folders and sub-folders.}
+\item{Sticky favorited documents and collections on-top.}
+\item{Removed pop-up notice when connection becomes interrupted.}
+  \item{Check for pseudo-deleted files and prompt non-cloud users to purge.}
+    \item{New CLI options: \textit{\--\--cli}, \textit{\--\--screenshot-p}, \textit{\--\--screenshot-l}, \textit{\--\--list-documents}, \textit{\--\--list-collections}, \linebreak\textit{\--\--download-doc}, \textit{\--\--export-pdf-b}, \textit{\--\--export-pdf-v}, \textit{\--\--export-pdf-o}, \textit{\--\--upload-doc}, \linebreak\textit{\--\--upload-doc-to}, \textit{\--\--render-rmn-pdf-b}, \textit{\--\--render-rmn-pdf-v}}
+    \item{Show error message for About Pane network failures.}
+\item{Improved PDF handling with regards to CropBox, MediaBox.}
+\item{Improved handling with reMarkable Cloud.}
+\item{Bundle SSL certificates.}
+  \item{Sanitize quote characters from filenames.}
+\item{Fixed defect where Mechanical Pencil v1 (from system software prior to 1.8.1.1) rendered incorrectly.}
+  \item{Fixed defect where RM2 screenshots were mis-aligned by 8 pixels.}
+  \item{Fixed defect where using Adjust View had no effect on exported PDFs.}
+  \item{Fixed defect where the recovery OS was dependent upon contents of eMMC. Tablet now shows black screen during recovery operations.}
+  \item{Fixed defect where connection presets could disappear.}
+  \item{Fixed defect where RMN uploads were invisible if they were originally taken from a parent folder.}
+    \item{Fixed defect where the program could crash for macOS 11 (Big Sur) users when exporting select PDFs.}
+    
+
+\end{itemize}
+
+\subsection{Known Defects}
+\begin{itemize}
+\item{Some documents exported with a base PDF and Layers enabled may render OK, but be reported in Adobe Acrobat as having a generic error, and the Background layer may toggle the entire page.}
+\item{Improper annotation rotation with PDF pages that are rotated 270 degrees (usually appearing upside-down).}
+\item{Some PDFs are unable to be decoded and fail to export, or export blank. Some examples are password-protected PDFs, and My Deep Guide's yearly planner.\footnote{A temporary workaround is to process these PDFs with \textit{qpdf} and overwrite the original PDF on the device through SSH.}}
+  \item{Lucida Console is forced on macOS, instead of the default system typeface, because of a font-rendering issue in Qt with macOS 11 (Big Sur) where space characters that appear after a comma or period are invisible.}
+  \item{No warning for RMPKG fault}
+\end{itemize}
+
+
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{r2021.001}
+\label{sec:r2021.001}
+Released on January 31, 2021, this version addresses compatibility for reMarkable 2, system software 2.5.0.27, and macOS Big Sur, fixes bugs and annoying behavior, and introduces new features.
+
+\subsection{Compatibility}
+\begin{tabular}{ r | l }
+  Hardware & reMarkable 1 \& 2 \\
+  Software & 1.8.1.1--2.5.0.27 \\
+  PC & FreeBSD 12.1, Ubuntu 18/20 LTS, Fedora 33, openSUSE 15.2, CentOS 7, \\
+  & macOS 10.13-11.1, Windows 10 \\
+\end{tabular}
+
+\subsection{Important Notices}
+\begin{itemize}
+\item[!]{Low-level backup/restore is unsupported with reMarkable 2.}
+\item[!]{reMarkable 2 owners on Windows do not need to install the libusb driver.}
+\end{itemize}
+
+\subsection{Release Notes}
+\begin{itemize}
+\item{reMarkable 2 compatibility, screenshots}
+  \item{System software 2.5.0.27 compatibility}
+  \item{macOS 11 (Big Sur) compatibility}
+  \item{KDE, dark theme support}
+    \item{Parabola-rM backup/restore}
+  \item{Directly import SVG and PNG images as templates}
+  \item{Multiple presets for different networks}
+  \item{Password visibility toggle}
+  \item{Hierarchical download/export documents}
+  \item{CLI flags: \textit{\--\--autoconnect}, \textit{\--\--dark}, \textit{\--\--no-compat-check}}
+  \item{Rename documents and collections}
+  \item{Application icon, GNU/Linux installers}
+  \item{Fetch new compatibility tables without updating RCU}
+  \item{Switches program license to GNU AGPLv3 or later}
+  \item{Uses to .app packaging for macOS}
+  \item{Makefile conveniences, like venv and packaging}
+  \item{Keyboard shortcuts for quitting/closing}
+  \item{Fixes defect where key-based authentication was used instead of password}
+  \item{Fixes defect where data-only restore was non-functional}
+  \item{Fixes defect where \textit{/home/root} was sometimes used instead of \textit{\$HOME}}
+  \item{Fixes defect where backups under Windows failed when running RCU from a non-primary volume}
+  \item{Fixes defect where upload progress meter never changed from 0\%}
+\end{itemize}
+
+\subsection{Known Defects}
+\begin{itemize}
+\item{Unable to load recovery OS when the tablet has a botched splash image.\footnote{A new recovery OS is available by email, but was not polished enough to make this release.}}
+\item{Some documents exported with a base PDF and Layers enabled may render OK, but be reported in Adobe Acrobat as having a generic error, and the Background layer may toggle the entire page.}
+\item{Force-refreshing the Notebooks Pane doesn't work under FreeBSD or macOS.}
+\item{No conflict check for RMPKGs}
+\item{No warning for RMPKG fault}
+\end{itemize}
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{r2020.003}
+\label{sec:r2020-003}
+Released on October 3, 2020, this version addresses compatibility for system software 2.3.0.16, fixes bugs and annoying behavior, and introduces new export options.
+
+\subsection{Compatibility}
+\footnote{This version is likely compatible with reMarkable 2 (except backup/restore) but is untested.}
+\begin{tabular}{ r | l }
+  Hardware & RM100, RM102 (reMarkable 1) \\
+  Software & 1.8.1.1--2.3.0.16 \\
+  PC & FreeBSD 12.1, Ubuntu 18.04, macOS 10.13, Windows 10 \\
+\end{tabular}
+
+\subsection{Important Notices}
+\begin{itemize}
+\item[!]{This version changes the settings and data paths. To migrate old backups, copy the \textit{backups} directory from the old data directory to the new one. The old data directories are:}
+  \begin{itemize}
+  \item[]{FreeBSD, GNU/Linux: \textit{\textasciitilde/.config/rcu}}
+  \item[]{macOS: \textit{\textasciitilde/Library/Preferences}}
+  \item[]{Windows: \textit{C:\textbackslash HKEY\_CURRENT\_USER\textbackslash SOFTWARE\textbackslash rcu\textbackslash rcu}}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Release Notes}
+\begin{itemize}
+\item{System software 2.3.0.16 compatibility}
+\item{Resizable UI, with Hi-DPI support}
+\item{New application data directory, user-setable in configuration file}
+  \begin{itemize}
+  \item{FreeBSD, GNU/Linux}
+    \begin{itemize}
+    \item[]{Settings: \textit{\textasciitilde/.config/davisr/rcu.conf}}
+    \item[]{Data: \textit{\textasciitilde/.local/share/davisr/rcu}}
+    \end{itemize}
+  \item{macOS}
+    \begin{itemize}
+    \item[]{Settings: \textit{\textasciitilde/Library/Preferences/rcu.plist}}
+    \item[]{Data: \textit{\textasciitilde/Library/Application Support/rcu}}
+    \end{itemize}
+  \item{Windows}
+    \begin{itemize}
+    \item[]{Settings: \textit{HKEY\_CURRENT\_USER\textbackslash SOFTWARE\textbackslash davisr\textbackslash rcu}}
+    \item[]{Data: \textit{\%APPDATA\%\textbackslash davisr\textbackslash rcu}}
+    \end{itemize}
+  \end{itemize}
+\item{Faster startup/load time}
+\item{Automatic notebook view refresh (force with Ctrl+R or F5)}
+\item{Drag-and-drop document organization within the Notebooks Pane}
+\item{Save last-used directory for import/export operations}
+\item{Save notebook sorting method}
+\item{Upload to any collection (document folder)}
+\item{No longer requires Host to be an IP address in the Connection Dialog}
+\item{A port may be given in the Host field, separated with a ':' (colon)}
+\item{New Export PDF options}
+  \begin{itemize}
+  \item{PDF annotations for highlights}
+  \item{PDF layers (OCG) for each document layer}
+  \item{Customizable ink colors}
+  \item{Auto-open exported PDF}
+  \end{itemize}
+\item{Fix Wallpaper Pane bugs}
+  \begin{itemize}
+  \item{Removed "Powered Off" overlay text}
+  \item{Set to Original button works as-expected and will always keep a backup}
+  \end{itemize}
+\item{Fix rM Cloud compatibility bugs (delete, re-uploading old archives)}
+\item{Sanitize export filenames}
+\item{Compatibility with more GNU/Linux distros}
+  \begin{itemize}
+  \item{Now requires libxcb as a dependency (install \textit{libxcb-xinerama0})}
+  \end{itemize}
+\item{Warning popup when the tablet is disconnected}
+\item{reMy, from which RCU gets its .lines parser, is now credited visibly in the About Pane}
+\item{Reduce logging verbosity}
+\item{Smoother lines when exporting vectors}
+\end{itemize}
+
+\subsection{Known Defects}
+\begin{itemize}
+\item{Some documents exported with a base PDF and Layers enabled may report in Adobe Acrobat as having a generic error, but otherwise render OK.}
+\item{Force-refreshing the Notebooks Pane doesn't work under macOS.}
+\item{No conflict check for RMPKGs}
+\item{No warning for RMPKG fault}
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{r2020.002}
+\label{sec:r2020-002}
+Released on September 6, 2020, this version addresses issues blocking users from running \nameref{sec:r2020-001}.
+
+\subsection{Compatibility}
+\begin{tabular}{ r | l }
+  Hardware & RM100, RM102 (reMarkable 1) \\
+  Software & 1.8.1.1--2.2.0.48 \\
+  PC & FreeBSD 12.1, Ubuntu 18.04, macOS 10.13, Windows 10 \\
+\end{tabular}
+
+\subsection{Release Notes}
+\begin{itemize}
+\item{Fix "unknown document version" bug}
+\item{Fix improper handling of tall PDF documents}
+\item{Warn user when not taking/restoring backup from USB}
+\item{Set executable permission in macOS release archive}
+\item{Update manual with recovery mode instructions}
+\item{Update manual with Windows driver instructions}
+\end{itemize}
+
+\subsection{Known Defects}
+\begin{itemize}
+\item{No conflict check for RMPKGs}
+\item{No warning for RMPKG fault}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{r2020.001}
+\label{sec:r2020-001}
+Released on September 5, 2020, this is the first released version of RCU.
+
+\subsection{Compatibility}
+\begin{tabular}{ r | l }
+  Hardware & RM100, RM102 (reMarkable 1) \\
+  Software & 1.8.1.1--2.2.0.48 \\
+  PC & FreeBSD 12.1, Ubuntu 18.04, macOS 10.13, Windows 10 \\
+\end{tabular}
+
+\subsection{Release Notes}
+\begin{itemize}
+\item{First release of reMarkable Connection Utility (RCU)}
+\item{Application will open with console window}
+\end{itemize}
+

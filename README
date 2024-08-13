@@ -1,0 +1,52 @@
+
+
+                =====================================
+                 reMarkable Connection Utility (RCU)
+                =====================================
+
+RCU is a desktop client for all-in-one offline management of reMarkable 
+e-paper tablets. It lets users create and restore low-level backups,
+take screenshots, manage notebooks, templates, wallpaper, and
+third-party software, and act as a virtual printer. It ensures the
+user's data is completely in their control, unshackled from the
+manufacturer's proprietary cloud service.
+
+RCU differs from other software because it runs under every major PC
+operating system, its copyright is unencumbered and libre, and most of
+all it has unique functions that costlier software--and the tablet's
+own manufacturer--can't match. Notably, RCU has a custom PDF renderer
+that can generate PDFs with true layers, true highlight annotations,
+customizable ink colors, either vector or bitmap graphics, with higher
+resolution and lower file size than reMarkable's own software.
+
+The RCU User Manual is the primary source of documentation. It was 
+written with the utmost care; please read it carefully.
+
+Financial contributions directly support RCU's development and
+maintenance. If you find the program useful, please purchase a copy
+from the author at:  http://www.davisr.me/projects/rcu/  If you find
+that RCU is worth more to you than the amount you paid, please buy
+another copy.
+
+                                 ...
+
+                 Copyright (C) 2020-24  Davis Remmel
+
+This program is free software: you can redistribute it and/or modify 
+it under the terms of the GNU Affero General Public License as 
+published by the Free Software Foundation, either version 3 of the 
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+GNU Affero General Public License for more details. 
+
+You should have received a copy of the GNU Affero General Public License 
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+"reMarkable" is a registered trademark of reMarkable AS. RCU is not 
+affiliated with, or endorsed by, reMarkable AS. The use of "reMarkable" 
+in this work refers to the company's e-paper tablet products.
+
+

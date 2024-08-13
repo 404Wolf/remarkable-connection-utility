@@ -1,0 +1,40 @@
+\chapter{Troubleshooting}
+\label{sec:troubleshooting}
+
+\subsection{RCU can't connect to the tablet.}
+If a connection between the PC and reMarkable can't be established, the Connection Dialog will show an error message.
+
+The most-common problem is trying to use incorrect login information. This information is found on the tablet, in \textit{Menu}--\textit{Settings}--\textit{Help}--\textit{Copyrights and licenses}, under the section titled \textit{GPLv3 Compliance}. If using a USB connection, the Host will be \textit{10.11.99.1}, the Username will be \textit{root}, and the Password will vary depending on the tablet. The font used to show this password can be confusing if certain characters are used, such as uppercase ``I'', lowercase ``L'', and number ``1''. Try different combinations if your password contains these characters.
+
+If you are certian the login information is correct, it is recommended to use \textit{ping} to see if your PC is able to communicate with the tablet. Another way to test network connectivity is to enable the USB web interface, under \textit{Menu}--\textit{Settings}--\textit{Storage}. If you can connect using the web interface, you likely don't have a network problem.
+
+If you use a PC supplied by an employer, they may be blocking network requests. In that case, it is best to speak with the IT department about granting access.
+
+
+\subsection{RCU is showing a Compatibility Warning screen.}
+When a reMarkable tablet receives an update to the latest system software, RCU may display a Compatibility Warning screen. Since RCU trails reMarkable updates, it defaults to block access if using the program with a reMarkable system software version it doesn't know about. This mechanism is to prevent RCU from clobbering the tablet if reMarkable had introduced a breaking update.
+
+If a tablet update is found to be non-breaking, then RCU does not need to be wholly updated. Instead, RCU can download a new compatibility table that will allow it to work with new tablet software. This table may be updated in the \nameref{sec:aboutpane} with the Fetch Compatibility button.
+
+This warning message may be bypassed with the \textit{\--\--no-compat-check} command-line flag.
+
+\subsection{Templates aren't included with exported notebooks.}
+If a compatibility warning is bypassed for the \nameref{sec:notebookspane}, but not for the \nameref{sec:templatespane}, then templates will not be included in PDF or RMN exports. Both panes must be loaded for templates to become exported.
+
+\subsection{macOS won't run RCU because it's from an unidentified developer.}
+\label{sec:macosgatekeeper}
+Most macOS users have a program called Gatekeeper enabled. This software prevents unsigned-by-Apple software from running. In order to run RCU for the first time on macOS, users typically need to \textit{Right-Click}--\textit{Open}--\textit{Open}, which will allow the user to run the program. After doing that once, a user may simply double-click on the RCU icon thereafter.
+
+The author of RCU, instead of using Apple-specific technology, includes a platform-agnostic PGP signature to verify authenticity. If RCU was downloaded using HTTPS from \textit{files.davisr.me}, then it is reasonably safe to run.
+
+
+\subsection{Documents created or modified with system software 3.0+ can't be exported as Bitmap or Vector PDFs.}
+Support for exporting PDFs through RCU's custom renderer (Bitmap and Vector export options) from documents created or modified with system software 3.0+ is experimental. The document types which may be rendered with RCU's internal renderer are Epubs and PDFs with a reMarkable-native aspect ratio, and notebooks which do not use the continuous pages or text input features.
+
+Any document may be exported with the reMarkable's own renderer by using the Export PDF (Web UI) option. Please refer to \nameref{sec:notebookspane} for information about export types.
+
+
+\subsection{The ``Export PDF (Web UI)'' option is disabled.}
+RCU may export documents through the tablet's web interface (UI) either over USB or Wi-Fi. However, the interface's state may only be changed when the tablet is plugged into a computer with USB.
+
+To enable the tablet's web UI, connect the tablet to a computer with USB. Then, under \textit{Menu}--\textit{Settings}--\textit{Storage}, enable \textit{USB Web Interface}.

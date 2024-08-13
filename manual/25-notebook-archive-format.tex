@@ -1,0 +1,26 @@
+\chapter{Notebook Archive Format}
+\label{sec:notebookarchiveformat}
+Notebook Archive (RMN) files contain the raw editable data used by Xochitl, plus a copy of each template applied. They have an obvious structure, as seen in Figure \ref{fig:rmnstructure}. This directory is a direct export from Xochitl's files, from the device at \linebreak \textit{\textasciitilde/.local/share/remarkable/xochitl}.
+
+\begin{figure}[h]
+  \dirtree{%
+    .1 ExampleNotebook.rmn.
+    .2 6bde82bd-f580-456b-8275-c853438707a6/.
+    .3 5ae652c8-280b-4b00-9563-72f25f16ac29.rm.
+    .3 3e9610c9-7633-4964-8198-adc0d1968cea.rm.
+    .3 (...).
+    .2 6bde82bd-f580-456b-8275-c853438707a6.highlights/.
+    .2 6bde82bd-f580-456b-8275-c853438707a6.bookm.
+    .2 6bde82bd-f580-456b-8275-c853438707a6.content.
+    .2 6bde82bd-f580-456b-8275-c853438707a6.metadata.
+    .2 6bde82bd-f580-456b-8275-c853438707a6.pagedata.
+    .2 Blank.rmt.
+    .2 Small Lines.rmt.
+}
+\caption{Example structure of a notebook archive}
+\label{fig:rmnstructure}
+\end{figure}
+
+When saving a document it is preferred to use the RMN format over the PDF format because RMN files contain an exact copy of those notebooks. Therefore, a PDF may always be generated from an RMN archive.\footnote{See: \nameref{sec:cli}}
+
+Notebook archive files store all templates used in the document. When uploading an archive to a new device, these templates will be automatically installed if they didn't already exist.

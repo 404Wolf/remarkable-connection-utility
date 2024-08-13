@@ -82,9 +82,9 @@ python3Packages.buildPythonApplication rec {
       cp -r src $out/share/rcu
 
     ''
-    # + lib.optionalString stdenv.hostPlatform.isLinux ''
-    #   install -Dm644 package_support/gnulinux/50-remarkable.rules $out/etc/udev/rules.d/50-remarkable.rules
-    # ''
+    + lib.optionalString stdenv.hostPlatform.isLinux ''
+      install -Dm644 package_support/gnulinux/50-remarkable.rules $out/etc/udev/rules.d/50-remarkable.rules
+    ''
     + ''
 
       # Keep source from being GC'd by linking into it

@@ -1,3 +1,10 @@
+# Remarkable Connection Utility (Nix flake-ified)
+
+To run,
+`nix run github.com:404Wolf/remarkable-connection-utility`
+
+To build,
+`nix build github.com:404Wolf/remarkable-connection-utility`
 
 
                 =====================================
